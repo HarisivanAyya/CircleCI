@@ -5,27 +5,20 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: python:3.8  # More specific Python version
+      - image: python
     steps:
       - checkout
-      - run:
-          name: Run Main1.py
-          command: python Main1.py
-
+      - run: python Main1.py
   test:
     docker:
-      - image: python:3.8  # More specific Python version
+      - image: python
     steps:
       - checkout
-      - run:
-          name: Run Test.py
-          command: python Test.py
+      - run: python Test.py
 
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
       - build
-      - test:
-          requires:
-            - build  # Ensure that 'test' runs after 'build' succeeds
+      - test
