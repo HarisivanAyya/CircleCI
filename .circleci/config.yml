@@ -9,19 +9,14 @@ jobs:
       - image: python
     steps:
       - checkout
-      - run:
-          name: Run Main1.py
-          command: python Main1.py
+      - run: python Main1.py
 
   test:
     docker:
       - image: python
     steps:
       - checkout
-      - run:
-          name: Run Test.py
-          command: python Test.py
-
+      - run: python Test.py
 # Orchestrate our job run sequence
 workflows:
   build_and_test:
